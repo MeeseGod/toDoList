@@ -1,0 +1,46 @@
+body{
+    background-color: rgb(46, 45, 45);
+}
+
+#mainHeader{
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    margin-left: 5px;
+    animation: fadeIn 2s;
+}
+
+#mainTitle{
+    margin-bottom: 15px;
+}
+
+hr{
+    animation: fadeIn 1s;
+}
+
+#mainContainer{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+#projectsList{
+    height: 85vh;
+    width: 300px;
+    background-color: black;
+    margin-right: 15px;
+}
+
+#toDos{
+    height: 85vh;
+    width: 79vw;
+    background-color: blue;
+}
+
+@keyframes fadeIn {
+    from{
+        opacity: 0%;
+    }
+    to{
+        opacity: 100%;
+    }
+}
