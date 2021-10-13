@@ -20,17 +20,37 @@ hr{
 #mainContainer{
     display: flex;
     flex-direction: row;
+    align-items: flex-end;
     margin-top: 20px;
+    animation: fadeIn 2s;
 }
 
-#projectsList{
+#addProject{
+    position: absolute;
+    transform: translateY(-15px) translateX(15px);
+    border-radius: 100%;
+    border-style: none;
+    height: 40px;
+    width: 40px;
+}
+
+#addProject:hover{
+    background-color: rgb(92, 92, 92);
+}
+
+#projectsContainer{
     height: 85vh;
     width: 300px;
     background-color: black;
     margin-right: 15px;
 }
 
-#toDos{
+#projects{
+    height: 75vh;
+    width: 100%;
+}
+
+#toDoContainer{
     height: 85vh;
     width: 79vw;
     background-color: blue;
