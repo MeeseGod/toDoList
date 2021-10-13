@@ -1,1 +1,3 @@
-console.log("test@!");
+import getProjects from "./modules/projects"
+
+console.log(getProjects());

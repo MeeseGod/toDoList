@@ -1,1 +1,1 @@
-console.log("test@!");
+(()=>{"use strict";let e=[{projectName:"Test Project",dueDate:new Date(2021,12,12),tasks:{}}];console.log(e)})();
