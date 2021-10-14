@@ -56,6 +56,16 @@ hr{
     background-color: blue;
 }
 
+#projectCreationContainer{
+    height: 75vh;
+    width: 400px;
+    position: absolute;
+    display: none;
+    background-color: green;
+    left: 40%;
+    bottom: 8%;
+}
+
 @keyframes fadeIn {
     from{
         opacity: 0%;

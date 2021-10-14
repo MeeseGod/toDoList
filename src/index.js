@@ -1,6 +1,7 @@
 import getProjects from "./modules/projects"
-import {displayProjectCreation} from "./modules/display"
+
+document.getElementById('addProject').addEventListener('click', function(){
+    document.getElementById('projectCreationContainer').style.display = 'block';
+})
 
 console.log(getProjects());
-
-displayProjectCreation();

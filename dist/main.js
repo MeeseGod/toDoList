@@ -1,1 +1,1 @@
-(()=>{"use strict";let e=[{projectName:"Test Project",dueDate:new Date(2021,12,12),tasks:{}}];console.log(e),function(){let e=document.createElement("div");e.setAttribute("id","projectCreationContainer"),document.body.appendChild(e),console.log("EEEE")}()})();
+(()=>{"use strict";let e=[{projectName:"Test Project",dueDate:new Date(2021,12,12),tasks:{}}];document.getElementById("addProject").addEventListener("click",(function(){document.getElementById("projectCreationContainer").style.display="block"})),console.log(e)})();
