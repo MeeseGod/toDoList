@@ -64,6 +64,7 @@ hr{
     background-color: green;
     left: 40%;
     bottom: 8%;
+    animation: fadeIn 0.5s;
 }
 
 @keyframes fadeIn {
