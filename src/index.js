@@ -16,5 +16,4 @@ document.addEventListener("click", function(e){
 })
 
 display.testModule();
-
 display.displayProjects();

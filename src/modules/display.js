@@ -1,10 +1,10 @@
-import getProjects from "./projects";
+import project from "./projects";
 
 const display = (() => {
     const testModule = () => {console.log("Monkey")};
 
     const displayProjects = () => {
-        const getProject = getProjects();
+        const getProject = project.getProjects();
         for(let i = 0; i < getProject.length; i++){
             let createProjectDiv = document.createElement('div');
             createProjectDiv.setAttribute('id', `projectDiv${i}`);
