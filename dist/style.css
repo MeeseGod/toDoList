@@ -67,6 +67,15 @@ hr{
     animation: fadeIn 0.5s;
 }
 
+#projectFormContainer{
+    margin-left: 15px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: auto;
+}
+
 @keyframes fadeIn {
     from{
         opacity: 0%;

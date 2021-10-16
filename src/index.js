@@ -9,5 +9,5 @@ document.getElementById('cancelProjectCreation').addEventListener('click', funct
     document.getElementById('projectCreationContainer').style.display = 'none';
 })
 
-console.log(getProjects());
-console.log(displayProjects());
+// console.log(getProjects());
+displayProjects();
