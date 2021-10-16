@@ -2,22 +2,23 @@ let projects = [
     {
         projectName : "Test Project",
         dueDate : new Date(2021, 12, 12),
-        tasks : []
+        tasks : [],
+        description :   "This project was created in line"
     }
 ]
 
-let testTask = "Complete this!";
-
 class createProjects{
-    constructor(projectName, dueDate, tasks){
+    constructor(projectName, dueDate, tasks, description){
         this.projectName = projectName;
         this.dueDate = dueDate;
         this.tasks = tasks;
+        this.description = description;
     }
 }
 
 function testCreation(name, date, tasks){
-    let newProject = new createProjects("New Project", new Date(2021, 12, 12), {})
+    let date1 = new Date("2021-10-16");
+    let newProject = new createProjects("New Project", date1, ["Succeed"], "This is a projected created using a constructor");
     projects.push(newProject);
 }
 
@@ -26,13 +27,13 @@ function updateProjectTasks(tasks){
     projects[0].tasks.push("Testing");
 }
 
-function callConstructor(){
-    console.log("Create Project");
+function getTasks(){
+    console.log
 }
 
 function getProjects(){
     testCreation();
-    updateProjectTasks(testTask);
+    updateProjectTasks("Complete this project");
     console.log(projects);
     return projects;
 }

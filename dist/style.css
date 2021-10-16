@@ -48,6 +48,12 @@ hr{
 #projects{
     height: 75vh;
     width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.projectDivs{
+    color: white;
 }
 
 #toDoContainer{

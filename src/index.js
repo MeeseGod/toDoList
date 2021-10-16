@@ -1,5 +1,4 @@
-import getProjects from "./modules/projects"
-import displayProjects from "./modules/display"
+import {displayTasks, displayProjects} from "./modules/display"
 
 document.getElementById('addProject').addEventListener('click', function(){
     document.getElementById('projectCreationContainer').style.display = 'block';
@@ -9,5 +8,11 @@ document.getElementById('cancelProjectCreation').addEventListener('click', funct
     document.getElementById('projectCreationContainer').style.display = 'none';
 })
 
-// console.log(getProjects());
+document.addEventListener("click", function(e){
+    if(e.target.parentNode.className == 'projectDivs'){
+        console.log(e.target.parentNode.id.replace("projectDiv", ""));
+        displayTasks();
+    }
+})
+
 displayProjects();
