@@ -1,8 +1,6 @@
 import project from "./projects";
 
 const display = (() => {
-    const testModule = () => {console.log("Monkey")};
-
     const displayProjects = () => {
         const getProject = project.getProjects();
         for(let i = 0; i < getProject.length; i++){
@@ -16,11 +14,19 @@ const display = (() => {
         }
     };
 
-    const displayTasks = () =>{
-        console.log("Displaying tasks");
+    const displayTasks = (indexNumber) =>{
+        const getProject = project.getProjects();
+        document.getElementById('toDoContainer').innerHTML = "";
+        for(let i = 0; i < getProject[indexNumber].tasks.length; i++){
+            let taskDiv = document.createElement('div');
+            taskDiv.setAttribute('id', `project${indexNumber}task${i}`);
+            taskDiv.setAttribute('class', 'taskDiv');
+            taskDiv.innerHTML = getProject[indexNumber].tasks[i];
+            document.getElementById('toDoContainer').appendChild(taskDiv);
+        }
     };
 
-    return {testModule, displayTasks, displayProjects};
+    return {displayTasks, displayProjects};
 })();
 
 export default display

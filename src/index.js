@@ -1,4 +1,6 @@
 import display from "./modules/display"
+import project from "./modules/projects";
+import testCreation from "./modules/projects"
 
 document.getElementById('addProject').addEventListener('click', function(){
     document.getElementById('projectCreationContainer').style.display = 'block';
@@ -10,10 +12,10 @@ document.getElementById('cancelProjectCreation').addEventListener('click', funct
 
 document.addEventListener("click", function(e){
     if(e.target.parentNode.className == 'projectDivs'){
-        console.log(e.target.parentNode.id.replace("projectDiv", ""));
-        display.displayTasks();
+        let passingIndex = e.target.parentNode.id.replace("projectDiv", "")
+        display.displayTasks(passingIndex);
     }
 })
 
-display.testModule();
+project.testCreation();
 display.displayProjects();
