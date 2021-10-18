@@ -2,6 +2,7 @@ import project from "./projects";
 
 const display = (() => {
     const displayProjects = () => {
+        document.getElementById('projects').innerHTML = '';
         const getProject = project.getProjects();
         for(let i = 0; i < getProject.length; i++){
             let createProjectDiv = document.createElement('div');

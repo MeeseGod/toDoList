@@ -2,7 +2,7 @@ let projects = [
     {
         projectName : "Test Project",
         dueDate : new Date(2021, 12, 12),
-        tasks : [],
+        tasks : ["Test Task"],
         description :   "This project was created in line"
     }
 ]
@@ -23,6 +23,11 @@ const project = (() => {
         projects.push(newProject);
     };
 
+    const createProjectFromForm = (projectName, dueDate, tasks, description) => {
+        let newProject = new createProjects(projectName, dueDate, tasks, description);
+        projects.push(newProject);
+    }
+
     const updateProjectTasks = (tasks) => {
         projects[0].tasks.push(tasks);
         projects[0].tasks.push("Testing");
@@ -34,7 +39,7 @@ const project = (() => {
         return projects;
     };
 
-    return {getProjects, testCreation}
+    return {getProjects, testCreation, createProjectFromForm}
 })();
 
 export default project;

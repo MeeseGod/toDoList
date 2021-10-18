@@ -17,5 +17,12 @@ document.addEventListener("click", function(e){
     }
 })
 
+document.getElementById('submitProjectForm').addEventListener('click', function(){
+    console.log('Submitting Form');
+    let formInputs = document.getElementsByClassName('projectInput');
+    project.createProjectFromForm(formInputs[0].value, formInputs[1].value, [], formInputs[2].value);
+    display.displayProjects();
+})
+
 project.testCreation();
 display.displayProjects();
