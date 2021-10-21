@@ -8,6 +8,8 @@ let projects = [
 ]
 
 const project = (() => {
+    let targetProjectIndex = '';
+
     class createProjects{
         constructor(projectName, dueDate, tasks, description){
             this.projectName = projectName;
@@ -26,7 +28,7 @@ const project = (() => {
     const createProjectFromForm = (projectName, dueDate, tasks, description) => {
         let newProject = new createProjects(projectName, dueDate, tasks, description);
         projects.push(newProject);
-    }
+    };
 
     const updateProjectTasks = (tasks) => {
         projects[0].tasks.push(tasks);
@@ -39,7 +41,7 @@ const project = (() => {
         return projects;
     };
 
-    return {getProjects, testCreation, createProjectFromForm}
+    return {getProjects, testCreation, createProjectFromForm, targetProjectIndex}
 })();
 
 export default project;

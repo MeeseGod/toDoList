@@ -15,19 +15,35 @@ const display = (() => {
         }
     };
 
-    const displayTasks = (indexNumber) =>{
+    const displayTasks = (indexNumber) => {
         const getProject = project.getProjects();
         document.getElementById('toDoContainer').innerHTML = "";
+        const tasksContainer = document.createElement('div');
+        tasksContainer.setAttribute('id', 'tasksContainer');
+        document.getElementById('toDoContainer').appendChild(tasksContainer);
         for(let i = 0; i < getProject[indexNumber].tasks.length; i++){
             let taskDiv = document.createElement('div');
             taskDiv.setAttribute('id', `project${indexNumber}task${i}`);
             taskDiv.setAttribute('class', 'taskDiv');
             taskDiv.innerHTML = getProject[indexNumber].tasks[i];
-            document.getElementById('toDoContainer').appendChild(taskDiv);
+            document.getElementById('tasksContainer').appendChild(taskDiv);
         }
     };
 
-    return {displayTasks, displayProjects};
+    const displayProjectCreationForm = (input) => {
+        if (input == 'Display'){
+            document.getElementById('projectCreationContainer').style.display = 'block';
+        }
+        else if(input == 'Hide'){
+            document.getElementById('projectCreationContainer').style.display = 'none';
+        }
+    }
+
+    const displayTaskCreationForm = (input) => {
+
+    }
+
+    return {displayTasks, displayProjects, displayProjectCreationForm};
 })();
 
 export default display
