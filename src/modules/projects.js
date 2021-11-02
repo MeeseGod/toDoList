@@ -2,13 +2,15 @@ let projects = [
     {
         projectName : "Test Project",
         dueDate : new Date(2021, 12, 12),
-        tasks : ["Test Task"],
-        description :   "This project was created in line"
+        tasks : [],
+        description :   "[Description]"
     }
-]
+];
 
 const project = (() => {
-    let targetProjectIndex = '';
+
+    let activeProject = '';
+    let formTarget = '';
 
     class createProjects{
         constructor(projectName, dueDate, tasks, description){
@@ -19,29 +21,69 @@ const project = (() => {
         };
     };
 
-    const testCreation = (name, date, tasks) => {
-        let date1 = new Date("2021-10-16");
-        let newProject = new createProjects("New Project", date1, ["Succeed"], "This is a projected created using a constructor");
-        projects.push(newProject);
+    class createTasks{
+        constructor(taskName, dueDate){
+            this.taskName = taskName;
+            this.dueDate = dueDate;
+        };
     };
 
-    const createProjectFromForm = (projectName, dueDate, tasks, description) => {
-        let newProject = new createProjects(projectName, dueDate, tasks, description);
-        projects.push(newProject);
-    };
 
-    const updateProjectTasks = (tasks) => {
-        projects[0].tasks.push(tasks);
-        projects[0].tasks.push("Testing");
-    };
-
-    const getTasks = () => {};
-
-    const getProjects = () => {
+    const getProjects = () =>{
         return projects;
     };
 
-    return {getProjects, testCreation, createProjectFromForm, targetProjectIndex}
+    const getActiveProject = () => {
+        return activeProject;
+    }
+
+    const setProjectActive = (input) => {
+        if(activeProject != projects[input]){
+            activeProject = projects[input];
+        }
+        if(input == ''){activeProject = ''};
+        console.log(activeProject);
+    }
+
+    const setFormTarget = (type) => {
+        if(!document.getElementById(`projectForm`) && !document.getElementById(`taskForm`)){
+            if(formTarget != type){formTarget = type};
+            console.log("Form target: " + formTarget);
+        };
+    };
+
+    const checkInputValues = (Name, dueDate, type) =>{
+            if(dueDate != '' && Name != ''){
+                if(type == 'projectForm'){
+                    createNewProject(Name, dueDate);
+                }
+                else if(type == 'taskForm'){
+                    createNewTask(Name, dueDate);
+                }
+                return true;
+            }
+            else if(Name == ''){
+                alert("Error - Invalid Project Name")
+            }
+            else if(dueDate == ''){
+                alert("Error - Invalid Due Date")
+            }
+        return false;
+    };
+
+    const createNewProject = (projectName, dueDate) =>{
+        let newProject = new createProjects(projectName, new Date(dueDate), [], '[Description]');
+        projects.push(newProject);
+        console.log(projects);
+    };
+
+    const createNewTask = (taskName, dueDate) => {
+        let newTask = new createTasks(taskName, new Date(dueDate));
+        activeProject.tasks.push(newTask);
+        console.log(activeProject.tasks);
+    }
+
+    return {getActiveProject, getProjects, setProjectActive, setFormTarget, checkInputValues}
 })();
 
 export default project;

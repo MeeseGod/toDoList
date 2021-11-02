@@ -1,49 +1,136 @@
-import project from "./projects";
+import project from "./projects"
 
 const display = (() => {
-    const displayProjects = () => {
-        document.getElementById('projects').innerHTML = '';
-        const getProject = project.getProjects();
-        for(let i = 0; i < getProject.length; i++){
-            let createProjectDiv = document.createElement('div');
-            createProjectDiv.setAttribute('id', `projectDiv${i}`);
-            createProjectDiv.setAttribute('class', `projectDivs`);
-            let displayProjectName = document.createElement('p');
-            displayProjectName.textContent = `Project: ${getProject[i].projectName}`;
-            document.getElementById('projects').appendChild(createProjectDiv);
-            document.getElementById(`projectDiv${i}`).appendChild(displayProjectName);
+
+    const displayProjects = () =>{
+        const projectsContainer = document.getElementById('projects');
+        projectsContainer.innerHTML = '';
+            for(let i = 0; i < project.getProjects().length; i++){
+                let newProjectDisplay = document.createElement('div');
+                newProjectDisplay.setAttribute('id', `displayedProject${i}`);
+                newProjectDisplay.setAttribute('class', 'displayedProjects');
+                let newProjectNameDisplay = document.createElement('p');
+                newProjectNameDisplay.textContent = project.getProjects()[i].projectName;
+                newProjectDisplay.appendChild(newProjectNameDisplay);
+                projectsContainer.appendChild(newProjectDisplay);
+            };
+            console.log(project.getProjects());
+    };
+
+    // Currently console logs the value returned from project.getActiveProject (see index.js and project.js)
+    const displayCurrentProject = (currentProject) => {
+        displayTasks(currentProject);
+    }
+
+    const displayTasks = (currentProject) => {
+        document.getElementById('taskContainer').innerHTML = '';
+        if(currentProject != ''){
+            let projectDescriptionDiv = document.createElement('div');
+            let projectDescriptionText = document.createElement('p');
+            let breakLine = document.createElement('hr');
+
+            projectDescriptionDiv.setAttribute('id', 'projectDescriptionDiv');
+            projectDescriptionText.textContent = project.getActiveProject().description;
+            projectDescriptionText.setAttribute('id', 'projectDescriptionText');
+            breakLine.setAttribute('id', 'taskHr');
+
+            document.getElementById('taskContainer').appendChild(projectDescriptionDiv);
+            document.getElementById('taskContainer').appendChild(breakLine);
+            document.getElementById('projectDescriptionDiv').appendChild(projectDescriptionText);
+
+            if(currentProject.tasks.length == 0){
+                let taskDiv = document.createElement('div');
+                taskDiv.setAttribute('id', `taskDiv$`);
+                taskDiv.setAttribute('class', 'taskDiv');
+                let taskDisplay = document.createElement('p');
+                taskDisplay.textContent = "This project has no tasks";
+                document.getElementById('taskContainer').appendChild(taskDiv);
+                taskDiv.appendChild(taskDisplay);
+            }
+            else if(currentProject.tasks.length > 0){
+                for(let i = 0; i < currentProject.tasks.length; i++){
+                    let taskDiv = document.createElement('div');
+                    taskDiv.setAttribute('id', `taskDiv${i}`);
+                    taskDiv.setAttribute('class', 'taskDiv');
+                    let taskDisplay = document.createElement('p');
+                    taskDisplay.textContent = currentProject.tasks[i].taskName;
+                    document.getElementById('taskContainer').appendChild(taskDiv);
+                    taskDiv.appendChild(taskDisplay);
+                }
+            }
         }
     };
 
-    const displayTasks = (indexNumber) => {
-        const getProject = project.getProjects();
-        document.getElementById('toDoContainer').innerHTML = "";
-        const tasksContainer = document.createElement('div');
-        tasksContainer.setAttribute('id', 'tasksContainer');
-        document.getElementById('toDoContainer').appendChild(tasksContainer);
-        for(let i = 0; i < getProject[indexNumber].tasks.length; i++){
-            let taskDiv = document.createElement('div');
-            taskDiv.setAttribute('id', `project${indexNumber}task${i}`);
-            taskDiv.setAttribute('class', 'taskDiv');
-            taskDiv.innerHTML = getProject[indexNumber].tasks[i];
-            document.getElementById('tasksContainer').appendChild(taskDiv);
+    const createFormContainer = (type) => {
+        if(document.getElementById(`projectForm`) || document.getElementById(`taskForm`)){
+            console.log('Form exists');
+        }
+        else{
+            let formContainer = document.createElement('div');
+            formContainer.setAttribute('id', `${type}Form`);
+            document.body.appendChild(formContainer);
+            fillForm(type);
         }
     };
 
-    const displayProjectCreationForm = (input) => {
-        if (input == 'Display'){
-            document.getElementById('projectCreationContainer').style.display = 'block';
+    const fillForm = (type) =>{
+        if(type == 'project'){
+            let projectFormTitle = document.createElement('h1');
+            let projectNameInput = document.createElement('input');
+            let projectDateInput = document.createElement('input');
+
+            projectFormTitle.textContent = 'Create a Project';
+            projectFormTitle.setAttribute('id', 'projectFormTitle');
+            projectFormTitle.setAttribute('class', 'formTitle');
+
+            projectNameInput.setAttribute('type', 'text');
+            projectNameInput.setAttribute('id', 'projectNameInput');
+            projectNameInput.setAttribute('class', 'formInput');
+
+            projectDateInput.setAttribute('type', 'date');
+            projectDateInput.setAttribute('id', 'projectDateInput');
+            projectDateInput.setAttribute('class', 'formInput');
+
+            document.getElementById('projectForm').appendChild(projectFormTitle);
+            document.getElementById('projectForm').appendChild(projectNameInput);
+            document.getElementById('projectForm').appendChild(projectDateInput);
         }
-        else if(input == 'Hide'){
-            document.getElementById('projectCreationContainer').style.display = 'none';
+        else if(type == 'task'){
+            let taskFormTitle = document.createElement('h1');
+            let taskNameInput = document.createElement('input');
+            let taskDateInput = document.createElement('input');
+
+            taskFormTitle.textContent = 'Create a Project';
+            taskFormTitle.setAttribute('id', 'taskFormTitle');
+            taskFormTitle.setAttribute('class', 'formTitle');
+
+            taskNameInput.setAttribute('id', 'taskNameInput');
+            taskNameInput.setAttribute('class', 'formInput');
+
+            taskDateInput.setAttribute('type', 'date');
+            taskDateInput.setAttribute('id', 'taskDateInput');
+            taskDateInput.setAttribute('class', 'formInput');
+
+            document.getElementById('taskForm').appendChild(taskFormTitle);
+            document.getElementById('taskForm').appendChild(taskNameInput);
+            document.getElementById('taskForm').appendChild(taskDateInput);
         }
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('id', 'submitForm');
+        submitButton.innerText = 'Submit';
+        document.getElementById(`${type}Form`).appendChild(submitButton);
+
+        const closeButton = document.createElement('button');
+        closeButton.setAttribute('id', 'closeForm');
+        closeButton.innerText = 'Cancel';
+        document.getElementById(`${type}Form`).appendChild(closeButton);
+    };
+
+    const removeTaskForm = () =>{
+        document.getElementById('taskForm').remove();
     }
 
-    const displayTaskCreationForm = (input) => {
-
-    }
-
-    return {displayTasks, displayProjects, displayProjectCreationForm};
+    return {displayProjects, displayCurrentProject, createFormContainer, removeTaskForm};
 })();
 
 export default display

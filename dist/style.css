@@ -13,8 +13,12 @@ body{
     margin-bottom: 15px;
 }
 
-hr{
+#topHr{
     animation: fadeIn 1s;
+}
+
+#taskHr{
+    width: 97%;
 }
 
 #mainContainer{
@@ -27,22 +31,36 @@ hr{
 
 #addProject{
     position: absolute;
-    transform: translateY(-15px) translateX(15px);
     border-radius: 100%;
     border-style: none;
     height: 40px;
     width: 40px;
+    bottom: 32px;
+    left: 250px;
 }
 
-#addProject:hover{
+#addTask{
+    visibility: hidden;
+    position: absolute;
+    border-radius: 100%;
+    border-style: none;
+    height: 40px;
+    width: 40px;
+    bottom: 32px;
+    right: 15px;
+}
+
+#addProject:hover, #addTask:hover{
     background-color: rgb(92, 92, 92);
 }
 
 #projectsContainer{
     height: 85vh;
     width: 300px;
-    background-color: black;
+    background-color: #8f8f8f;
     margin-right: 15px;
+    margin-left: 5px;
+    border-radius: 15px;
 }
 
 #projects{
@@ -50,36 +68,60 @@ hr{
     width: 100%;
     margin-left: 10px;
     margin-right: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .projectDivs{
     color: white;
 }
 
-#toDoContainer{
+#taskContainer{
     height: 85vh;
     width: 79vw;
-    background-color: blue;
+    background-color: #8f8f8f;
+    margin-right: 5px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 5px;
+    border-radius: 15px;
 }
 
-#projectCreationContainer{
-    height: 75vh;
-    width: 400px;
+.taskDiv{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 0;
+    background-color: #a9a9a9;
+    border-radius: 20px;
+    height: auto;
+}
+
+.taskDiv:hover{
+    background-color: #6c6c6c;
+}
+
+#projectDescriptionText{
+    margin-left: 20px;
+}
+
+#taskForm, #projectForm{
     position: absolute;
-    display: none;
-    background-color: green;
-    left: 40%;
-    bottom: 8%;
-    animation: fadeIn 0.5s;
-}
-
-#projectFormContainer{
-    margin-left: 15px;
-    margin-top: 15px;
     display: flex;
     flex-direction: column;
-    width: 300px;
-    margin: auto;
+    background-color: black;
+    top: 35%;
+    left: 35%;
+    height: 200px;
+    width: 400px;
+}
+
+.displayedProjects{
+    background-color: #a9a9a9;
+    width: 90%;
+    height: 25px;
+    border-radius: 20px;
+}
+
+.displayedProjects:hover{
+    background-color: #6c6c6c;
 }
 
 @keyframes fadeIn {
