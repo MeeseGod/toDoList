@@ -114,15 +114,37 @@ body{
 }
 
 .displayedProjects{
+    display: block;
+    min-height: 30px;
     background-color: #a9a9a9;
     width: 90%;
-    height: 25px;
     border-radius: 20px;
 }
 
 .displayedProjects:hover{
     background-color: #6c6c6c;
 }
+
+#descriptionFormContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 20vw;
+    width: 60vw;
+    background-color: green;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+}
+
+#descriptionTextArea{
+    max-width: 99%;
+    min-width: 99%;
+    max-height: 85%;
+    min-height: 85%;
+}
+
+
 
 @keyframes fadeIn {
     from{

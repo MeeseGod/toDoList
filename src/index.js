@@ -70,48 +70,31 @@ document.addEventListener('click', function(e){
     }
 });
 
+document.addEventListener('click', function(e){
+    if(e.target.id == 'projectDescriptionDiv' || e.target.id == 'projectDescriptionText'){
+        console.log("Project Desc");
+        console.log(project.getActiveProject());
+        display.descriptionForm();
+    }
+})
+
 // To Do --------------------------------------------------------------------------------
 
-//     DONE - Make a button to create a new project
-            // DONE - Due dates are mandatory
-                // Projects should be changeable after creation via an edit project button
+    // Where we're at
+        // We can add projects and tasks using buttons and forms
+        // We can set names and due dates
 
+    // What we need
+        // We need to be able to edit task due dates and informations
+        // We need to be able to edit the description of our project
+        // We need to display the due date of our tasks and projects
+        // We need to be able to remove tasks and projects
 
-//     DONE-  Make a button to create new tasks that is only visible when a project is selected
-//          // Tasks should be able to contain a due date either less than or equal to the project and a descriptor
-                // Tasks should be changeable and removable via an edit button
-                // Due dates are not mandatory
+    // What we want
+        // When clicking on the description, create a pop up with a text area, submit and close button
+        // User can Submit a new description this way and cancel
+    
+        // When clicking on the due date, allow them to change it with a date input
 
-//      Display whether or not the project is late if the due date is met or not with a red/green coloring system
-//          // Display whether or not a task is late with a red/green coloring system
+        // Add a remove button when clicking on a task or project
 
-
-//      Fix button positions!
-            // Currently clearing innerhtml deletes buttons since they're within container
-                // Fix this
-
-// --------------------------------------------------------------------------------------
-
-
-
-
-// Notes from last session:
-
-    // DONE - Refactor checkInput in projects.js to account for and push tasks
-        // DONE - Implement logic for above ^
-        // Implement secondary check through a new function that returns true or false
-            // Secondary check makes sure the task isn't due after the project due date or due before today's date
-                // Simply check if task date is less than or equal to project date, it works ^ 
-
-
-    // Set up proper task and project display
-        // Set up an editable description display
-            // Click event listener - Replaces p element with a textarea, submit text area to edit description, cancel to keep old description
-        // Set up an editable task display
-            // Task name + due date should be changeable
-                // Task name - see event listener idea ^
-                // Due date - Create a date element on click
-        // Tasks and Projects should be removable
-            // Add buttons for removing
-
-    // 

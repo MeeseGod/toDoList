@@ -40,7 +40,7 @@ const display = (() => {
 
             if(currentProject.tasks.length == 0){
                 let taskDiv = document.createElement('div');
-                taskDiv.setAttribute('id', `taskDiv$`);
+                taskDiv.setAttribute('id', `noTaskDiv`);
                 taskDiv.setAttribute('class', 'taskDiv');
                 let taskDisplay = document.createElement('p');
                 taskDisplay.textContent = "This project has no tasks";
@@ -130,7 +130,27 @@ const display = (() => {
         document.getElementById('taskForm').remove();
     }
 
-    return {displayProjects, displayCurrentProject, createFormContainer, removeTaskForm};
+    const descriptionForm = () => {
+        if(!document.getElementById('descriptionFormContainer')){
+        let descriptionFormContainer = document.createElement('div');
+        let descriptionFormTextArea = document.createElement('textarea');
+        let descriptionFormSubmit = document.createElement('button');
+        let descriptionFormCancel = document. createElement('button');
+
+        descriptionFormContainer.setAttribute('id', 'descriptionFormContainer');
+        descriptionFormTextArea.setAttribute('id', 'descriptionTextArea');
+        descriptionFormSubmit.setAttribute('id', 'descriptionSubmit');
+        descriptionFormCancel.setAttribute('id', 'descriptionCancel');
+
+
+        document.body.append(descriptionFormContainer);
+        document.getElementById('descriptionFormContainer').appendChild(descriptionFormTextArea);
+        document.getElementById('descriptionFormContainer').appendChild(descriptionFormSubmit);
+        document.getElementById('descriptionFormContainer').appendChild(descriptionFormCancel);
+        }
+    }
+
+    return {displayProjects, displayCurrentProject, createFormContainer, removeTaskForm, descriptionForm};
 })();
 
 export default display

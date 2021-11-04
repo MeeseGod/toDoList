@@ -58,6 +58,12 @@ const project = (() => {
                     createNewProject(Name, dueDate);
                 }
                 else if(type == 'taskForm'){
+                    let inputDate = new Date(dueDate);
+                    let projectDate = new Date(project.getActiveProject().dueDate);
+                    if(inputDate < projectDate){
+                        alert("Error - Task Due before Project")
+                        return false;
+                };
                     createNewTask(Name, dueDate);
                 }
                 return true;
